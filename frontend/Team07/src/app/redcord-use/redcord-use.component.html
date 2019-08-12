@@ -1,0 +1,146 @@
+<h2 align="center">Welcome To YaMaii</h2>
+<h2 align="center">ร้านยามั้ย ยินดีต้อนรับ</h2>
+
+<mat-card>
+
+  <div class="button-row" align="center">
+
+    <mat-card-actions>
+
+      <a mat-stroked-button routerLink="/home">
+        <mat-icon>home</mat-icon>ไปหน้าหลัก
+      </a>
+
+      <a mat-stroked-button routerLink="/register">สมัครสมาชิก</a>
+
+      <a mat-stroked-button routerLink="/drug-stroagemenu">คลังยา</a>
+      <a mat-stroked-button routerLink="/orders-drug">จัดหายา</a>
+
+
+
+
+      <a mat-stroked-button routerLink="/drug-data">จัดเก็บข้อมูลยา</a>
+
+      <a mat-stroked-button routerLink="/post">จัดการพนักงาน</a>
+
+      <a mat-stroked-button routerLink="/redcord-use">บันทึกการใช้ยา</a>
+      <a mat-stroked-button routerLink="/resistance">บันทึกการดื้อยา</a>
+
+      <a mat-stroked-button routerLink="/delivery">บันทึกใบส่งของ</a>
+
+      <a mat-stroked-button routerLink="/notification">แจ้งเตือนทานยา</a>
+      <a mat-stroked-button routerLink="/salenote">บันทึกการขาย</a>
+
+      <!-- <a mat-stroked-button routerLink="/home">ติดต่อร้าน</a>
+
+      <a mat-stroked-button routerLink="/bill">จัดการคลังสินค้า</a> -->
+
+      <a mat-stroked-button routerLink="" (click)="setstaffOfline()">ออกจากระบบ</a>
+
+
+
+    </mat-card-actions>
+
+  </div>
+
+</mat-card>
+
+<body>
+  <div class="flex-container">
+    <mat-tab-group>
+      <mat-tab label="บันทึกการใช้ยา">
+        <div class="flex-container">
+          <form align="center">
+            <h2>กรอกรายละเอียดข้อมูลยา</h2>
+
+
+
+            <br>
+            <br>
+            <mat-form-field>
+              <h4>ชื่อคนไข้:</h4>
+              <input matInput placeholder="" [(ngModel)]="data.namecus"required name="namecus" #namecus value="Sushi" >
+            </mat-form-field><br>
+            <pre align="center">
+              <button mat-raised-button color="primary"  (click)="searchCustomername()">ค้นหา</button>
+            </pre>
+
+
+            &nbsp;
+            <mat-card class="payment-card">
+              <h2>ข้อมูลคนใช้ยา</h2>
+              <p>คำนำหน้า:&nbsp;&nbsp;&nbsp; {{this.customer.initial.name}}</p>
+              <p>ชื่อ:&nbsp;&nbsp;&nbsp; {{this.customer.customerName}}</p>
+              <p>เพศ:&nbsp;&nbsp;&nbsp; {{this.customer.gender.sex}}</p>
+              <p>กรุ๊ปเลือด:&nbsp;&nbsp;&nbsp; {{this.customer.bloodType.name}}</p>
+              <p>ที่อยู่:&nbsp;&nbsp;&nbsp; {{this.customer.customerAddress}}</p>
+
+
+
+
+            </mat-card>
+
+
+            <mat-form-field>
+              <h4>เลือกยาที่คนไข้ใช้</h4>
+              <mat-select [(ngModel)]="drugdataselect" name="Dran">
+                <mat-option *ngFor="let titlecat of drugdata" [value]="titlecat.drugdataId">
+                  {{titlecat.drug.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <!-- &nbsp;
+            <mat-card class="payment-card">
+              <h2>สรรพคุณยา</h2>
+              <p>name:&nbsp;&nbsp;&nbsp; {{this.data.initial}}</p>
+              <p>name:&nbsp;&nbsp;&nbsp; {{this.data.firstname}}</p>
+              <p>สรรพคุณยา:&nbsp;&nbsp;&nbsp; {{this.data.gender}}</p>
+
+
+
+
+            </mat-card> -->
+
+<br>
+<br>
+            <mat-form-field>
+              <h4>ผลการใช้ยา:</h4>
+              <input matInput placeholder="" [(ngModel)]="data.symptom" required name="symptom" #symptom>
+            </mat-form-field>
+            <br>
+            <pre align="center">
+      <button mat-raised-button color="primary"  (click)="SaveRedcord()">บันทึก</button>
+    </pre>
+
+
+          </form>
+        </div>
+      </mat-tab>
+
+      <!-- <mat-tab label="รายชื่อยาที่มีในคลัง">
+        <div class="flex-container">
+          <h2>รอทำ </h2>
+        </div>
+      </mat-tab> -->
+      <!--
+      <mat-tab label="ดูข้อมูลยา">
+        <div class="flex-container">
+          ดูข้อมูลยา
+        </div>
+      </mat-tab>
+    -->
+    </mat-tab-group>
+  </div>
+</body>
+
+<p align="center">
+  <B>YamaiiShop@gmail.com</B>
+</p>
+
+<p align="center">
+  <B>Tel: +66123456789</B>
+
+
+
+</p>

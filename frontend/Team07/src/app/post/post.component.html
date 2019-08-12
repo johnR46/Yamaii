@@ -1,0 +1,95 @@
+<h2 align="center">Welcome To YaMaii</h2>
+<h2 align="center">ร้านยามั้ย ยินดีต้อนรับ</h2>
+
+<mat-card>
+
+  <div class="button-row" align="center">
+
+    <mat-card-actions>
+
+      <a mat-stroked-button routerLink="/home">
+        <mat-icon>home</mat-icon>ไปหน้าหลัก
+      </a>
+
+      <a mat-stroked-button routerLink="/register">สมัครสมาชิก</a>
+
+      <a mat-stroked-button routerLink="/drug-stroagemenu">คลังยา</a>
+      <a mat-stroked-button routerLink="/orders-drug">จัดหายา</a>
+
+
+
+      <a mat-stroked-button routerLink="/drug-data">จัดเก็บข้อมูลยา</a>
+
+      <a mat-stroked-button routerLink="/post">จัดการพนักงาน</a>
+
+      <a mat-stroked-button routerLink="/redcord-use">บันทึกการใช้ยา</a>
+      <a mat-stroked-button routerLink="/resistance">บันทึกการดื้อยา</a>
+
+      <a mat-stroked-button routerLink="/delivery">บันทึกใบส่งของ</a>
+
+      <a mat-stroked-button routerLink="/notification">แจ้งเตือนทานยา</a>
+      <a mat-stroked-button routerLink="/salenote">บันทึกการขาย</a>
+
+      <!-- <a mat-stroked-button routerLink="/home">ติดต่อร้าน</a>
+
+      <a mat-stroked-button routerLink="/bill">จัดการคลังสินค้า</a> -->
+
+
+      <a mat-stroked-button routerLink="" (click)="setstaffOfline()">ออกจากระบบ</a>
+
+
+    </mat-card-actions>
+
+  </div>
+
+</mat-card>
+
+<mat-card class="post-card">
+  <h1 style="text-align:center">
+      บันทึกเวลา เข้า-ออกงาน
+    </h1>
+<mat-card-content style="text-align:center">
+    <form>
+        <mat-form-field>
+          <mat-select placeholder="ชื่อพนักงาน" [(ngModel)]="detail.staff" [(ngModel)]="emp.staffSelect" name="staff" #staff>
+            <mat-option *ngFor="let staff of staffs" [value]="staff.staffId">
+              {{staff.staffName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+
+  <form>
+      <mat-form-field>
+        <mat-select placeholder="ตำแหน่ง" [(ngModel)]="detail.department" [(ngModel)]="emp.departmentSelect" name="department" #department>
+          <mat-option *ngFor="let department of departments" [value]="department.deptId">
+            {{department.deptName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+
+  <form>
+    <mat-form-field>
+      <mat-select placeholder="ช่วงเวลาเข้า-ออก งาน" [(ngModel)]="detail.worktime" [(ngModel)]="emp.worktimeSelect" name="worktime" #worktime>
+        <mat-option *ngFor="let worktime of worktimes" [value]="worktime.timeId">
+          {{worktime.rangeTime}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+
+  <form>
+    <mat-form-field class="example-first-last ">
+      <input matInput placeholder="หมายเหตุ(Late,Out Early,Normally)" [(ngModel)]="detail.note" required name="Note" #Note>
+    </mat-form-field>
+  </form>
+
+</mat-card-content>
+
+<mat-card-actions style="text-align:right">
+  <a mat-raised-button  (click)="save1()" color="warn" type="submit" >Confirm</a>
+  <a mat-raised-button  (click)="cancel()" color="warn"routerLink="/home">Cancel</a>
+</mat-card-actions>
+</mat-card>
+<!-- routerLink="/show" -->

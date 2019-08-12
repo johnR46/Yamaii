@@ -1,0 +1,154 @@
+<h2 align="center">Welcome To YaMaii</h2>
+<h2 align="center">ร้านยามั้ย ยินดีต้อนรับ</h2>
+
+<mat-card>
+
+  <div class="button-row" align="center">
+    <mat-card-actions>
+
+      <a mat-stroked-button routerLink="/home">
+        <mat-icon>home</mat-icon>ไปหน้าหลัก
+      </a>
+
+      <a mat-stroked-button routerLink="/register">สมัครสมาชิก</a>
+
+      <a mat-stroked-button routerLink="/drug-stroagemenu">คลังยา</a>
+      <a mat-stroked-button routerLink="/orders-drug">จัดหายา</a>
+
+
+
+      <a mat-stroked-button routerLink="/drug-data">จัดเก็บข้อมูลยา</a>
+
+      <a mat-stroked-button routerLink="/post">จัดการพนักงาน</a>
+
+      <a mat-stroked-button routerLink="/redcord-use">บันทึกการใช้ยา</a>
+      <a mat-stroked-button routerLink="/resistance">บันทึกการดื้อยา</a>
+
+      <a mat-stroked-button routerLink="/delivery">บันทึกใบส่งของ</a>
+
+      <a mat-stroked-button routerLink="/notification">แจ้งเตือนทานยา</a>
+      <a mat-stroked-button routerLink="/salenote">บันทึกการขาย</a>
+
+      <!-- <a mat-stroked-button routerLink="/home">ติดต่อร้าน</a>
+
+      <a mat-stroked-button routerLink="/bill">จัดการคลังสินค้า</a> -->
+
+
+      <a mat-stroked-button routerLink="" (click)="setstaffOfline()">ออกจากระบบ</a>
+
+
+    </mat-card-actions>
+
+  </div>
+
+</mat-card>
+<h3 align="center">
+ ผู้ใช้ที่กำลังอยู่ในระบบจัดหายา :  {{this.names}}</h3>
+
+<body>
+  <div class="flex-container">
+    <mat-tab-group>
+      <mat-tab label="จัดหายา">
+        <div class="flex-container">
+          <form align="center">
+
+            <br>
+            <mat-form-field>
+              <h4>ชื่อรายการนำเข้ายา:</h4>
+              <input matInput placeholder="" [(ngModel)]="data.nameorders" required name="nameorders" #nameorders>
+            </mat-form-field><br>
+            <br>
+            <mat-form-field>
+              <h4>เลือกผู้ขายยาที่ต้องการ</h4>
+              <mat-select [(ngModel)]="partnersselect" name="Dranss">
+                <mat-option *ngFor="let titlepartners of partners" [value]="titlepartners.partnersId">
+                  {{titlepartners.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <br>
+
+            <br>
+            <mat-form-field>
+              <h4>เลือกรายการยาที่ต้องการนำเข้า</h4>
+              <mat-select [(ngModel)]="catalogselect" name="Dran">
+                <mat-option *ngFor="let titlecatalog of catalog" [value]="titlecatalog.catalogId">
+                  {{titlecatalog.catalogname}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <br>
+
+            <br>
+            <mat-form-field>
+              <h4>จำนวนยาที่ต้องการ:</h4>
+              <input matInput placeholder="" [(ngModel)]="data.amount" required name="amount" #amount>
+            </mat-form-field><br>
+            <pre align="center">
+                <button mat-raised-button color="primary"  (click)="saveOrders()">บันทึก</button>
+              </pre>
+
+          </form>
+        </div>
+      </mat-tab>
+
+      <mat-tab label="รายชื่อใบสั่งยาเข้าคลัง">
+        <div class="flex-container">
+        </div>
+        <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="orders">
+
+
+            <ng-container matColumnDef="position">
+              <th mat-header-cell *matHeaderCellDef> No. </th>
+              <td mat-cell *matCellDef="let element"> {{element.ordersId}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="nameorders">
+              <th mat-header-cell *matHeaderCellDef> หมายเลขใบนำเข้ายา </th>
+              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="namepartners">
+              <th mat-header-cell *matHeaderCellDef> ชื่อผู้ขาย </th>
+              <td mat-cell *matCellDef="let element"> {{element.partners.name}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="namecatalog">
+              <th mat-header-cell *matHeaderCellDef> ประเภทของยาที่นำเข้า </th>
+              <td mat-cell *matCellDef="let element"> {{element.catalog.catalogname}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="namedrug">
+              <th mat-header-cell *matHeaderCellDef> ยา </th>
+              <td mat-cell *matCellDef="let element"> {{element.drug.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="amountin">
+              <th mat-header-cell *matHeaderCellDef> จำนวนที่นำเข้า </th>
+              <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="amountcount">
+              <th mat-header-cell *matHeaderCellDef> จำนวนที่มีในคลัง </th>
+              <td mat-cell *matCellDef="let element"> {{element.drug.qty}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="staff">
+              <th mat-header-cell *matHeaderCellDef> ผู้เบิก </th>
+              <td mat-cell *matCellDef="let element"> {{element.staff.staffName}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+
+
+        </div>
+
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</body>
