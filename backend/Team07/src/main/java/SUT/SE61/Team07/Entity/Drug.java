@@ -40,7 +40,7 @@ public class Drug {
     @Min(1)
     private Integer qty;
 
-    public Drug() {
+    public Drug() {  // default constructer
     }
 
     public Drug(String name, Integer price, Integer qty) {
