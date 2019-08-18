@@ -31,7 +31,7 @@ class StaffController {
 
     @GetMapping("/Staff-list")
     public Collection<Staff> staffs() {
-        return staffrepository.findAll().stream().collect(Collectors.toList());
+        return staffrepository.findAll().stream().(Collectors.toList());
     }
 
     @GetMapping("/Staff/{staffId}")

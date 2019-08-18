@@ -67,3 +67,14 @@
             * enable CROS http ?
         * 
 
+#อธิบายส่วนอื่นๆ ใน Method ที่คนเขียนค่อนข้างจะข้องใจ
+* public Collection <> 
+    * Collection นั้นเป็นการเก็บข้อมูลแบบไดนามิกส์
+    * Collection ถูก Implement มาจาก Interfaces Collection ซึ่งเป็นไลบรารี่ของภาษาที่อยู่ใน Package java.util และใน Collection ส่วนมากนั้นสืบทอดมาจาก Abstract class และมีการ Implement บาง Interfaces รวมกัน
+    * https://docs.oracle.com/javase/7/docs/api/java/util/Collection.html ไว้ค้นหากงง ? 
+* return staffrepository.findAll().stream().collect(Collectors.toList());
+    *  Convert stream of strings to ArrayList
+    * งงว้อย
+
+  
+    
